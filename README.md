@@ -27,4 +27,4 @@ Abra o projeto no Xcode e rode no simulador ou dispositivo (▶︎).
 
 ## PREVIEW
 
-<img src=./preview></img>
+<img src=./preview.png></img>
