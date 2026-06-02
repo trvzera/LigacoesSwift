@@ -12,6 +12,7 @@ struct Ligacoes: View {
     let nome: String
     let efetuada: Bool
     let perdida: Bool
+    let recusada: Bool
     let dia: String
     var body: some View {
         HStack {
@@ -31,7 +32,7 @@ struct Ligacoes: View {
                     Image(systemName: efetuada ? "phone.fill.arrow.up.right" : "phone.fill.arrow.down.left")
                         .foregroundStyle(.gray)
                         .fixedSize(horizontal: false, vertical: true)
-                    Text(perdida ? "Perdida" : efetuada ? "Efetuada" : "Recebida")
+                    Text(verificarChamada())
                         .foregroundColor(.secondary)
                         .fixedSize(horizontal: true, vertical: false)
                 }
@@ -44,7 +45,24 @@ struct Ligacoes: View {
             }
         }
         .padding(10)
-
+    }
+    func verificarChamada() -> String {
+        if perdida == true {
+            if recusada == true {
+                return "Recusada"
+            }
+            return "Perdida"
+        }
+        else if perdida == false {
+            if efetuada == true {
+                return "Efetuada"
+            }
+            else if efetuada == false {
+                return "Recebida"
+            }
+            
+        }
+        return ""
     }
 }
 
@@ -76,15 +94,17 @@ struct ContentView: View {
                 btn(icon: "heart", texto: "Favorito")
 
             }.padding(50)
-            Ligacoes(pfp: "max.icon", nome: "Max", efetuada: true, perdida: false, dia: "Hoje")
+            Ligacoes(pfp: "max.icon", nome: "Max", efetuada: true, perdida: true, recusada: true, dia: "Hoje")
             Divider()
-            Ligacoes(pfp: "verso.icon", nome: "Solanum", efetuada: false, perdida: true, dia: "Ontem")
+            Ligacoes(pfp: "verso.icon", nome: "Solanum", efetuada: false, perdida: false, recusada: false, dia: "Ontem")
             Divider()
-            Ligacoes(pfp: "gabbro.icon", nome: "Gabbro", efetuada: false, perdida: false, dia: "Domingo")
+            Ligacoes(pfp: "gabbro.icon", nome: "Gabbro", efetuada: true, perdida: false, recusada: false, dia: "Domingo")
             Divider()
-            Ligacoes(pfp: "chloe.icon", nome: "Chloe", efetuada: true, perdida: true, dia: "27/06/2026")
+            Ligacoes(pfp: "chloe.icon", nome: "Chloe", efetuada: true, perdida: true, recusada: false, dia: "27/06/2026")
             Divider()
-            Ligacoes(pfp: "sean.icon", nome: "Sean", efetuada: false, perdida: true, dia: "20/06/2026")
+            Ligacoes(pfp: "sean.icon", nome: "Sean", efetuada: false, perdida: true, recusada: true, dia: "20/06/2026")
+            Divider()
+            Ligacoes(pfp: "riebeck.icon", nome: "Riebeck", efetuada: false, perdida: true, recusada: false, dia: "10/03/2026")
             Divider()
 
         }
