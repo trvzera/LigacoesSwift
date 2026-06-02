@@ -11,12 +11,12 @@ App em **SwiftUI** criado para simular uma tela de histórico de chamadas telef�
 
 ## Status
 
-**Em desenvolvimento** — a estrutura base já existe, mas o app ainda será evoluído.
+**Concluído** — Finalizado com toda a lógica das chamadas e layout.
 
 ## Em que consiste
 
 - **`btn`** — botão de ação vertical composto por um ícone de sistema (`SF Symbols`) e um texto descritivo abaixo.
-- **`Ligacoes`** — linha de histórico reutilizável que exibe a foto do perfil estilizada em círculo, nome do contato (que fica vermelho se a chamada for perdida), ícone indicativo do tipo de chamada (efetuada/recebida) e a data/hora.
+- **`Ligacoes`** — linha de histórico reutilizável que exibe a foto do perfil estilizada em círculo, nome do contato (que fica vermelho se a chamada for perdida/recusada), ícone indicativo do tipo de chamada (efetuada/recebida) e a data/hora.
 - **`ContentView`** — tela principal que junta o menu superior de botões e renderiza uma lista com cinco registros de chamadas diferentes reaproveitando o componente principal.
 
 Código em `Ligacoes/ContentView.swift`.
