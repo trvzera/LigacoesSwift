@@ -96,7 +96,7 @@ struct ContentView: View {
             }.padding(50)
             Ligacoes(pfp: "max.icon", nome: "Max", efetuada: true, perdida: true, recusada: true, dia: "Hoje")
             Divider()
-            Ligacoes(pfp: "verso.icon", nome: "Solanum", efetuada: false, perdida: false, recusada: false, dia: "Ontem")
+            Ligacoes(pfp: "verso.icon", nome: "Verso", efetuada: false, perdida: false, recusada: false, dia: "Ontem")
             Divider()
             Ligacoes(pfp: "gabbro.icon", nome: "Gabbro", efetuada: true, perdida: false, recusada: false, dia: "Domingo")
             Divider()
