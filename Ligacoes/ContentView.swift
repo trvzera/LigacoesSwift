@@ -39,12 +39,6 @@ struct Ligacoes: View {
         }
         .frame(width: 340)
         .padding(10)
-        .overlay(
-                Rectangle()
-                    .frame(height: 2)
-                    .foregroundColor(.gray.opacity(0.3)),
-                alignment: .bottom
-            )
 
     }
 }
@@ -54,9 +48,15 @@ struct btn: View {
     let texto: String
     var body: some View {
         VStack{
-            Image(systemName: icon).font(Font.largeTitle.bold())
+            Image(systemName: icon).font(Font.title3.bold())
+                .frame(width: 55, height: 55)
+                .background(Color(.systemGray5))
+                .clipShape(Circle())
             Text(texto)
+                .foregroundStyle(Color(.systemGray2))
+                .font(Font.subheadline)
         }
+        .frame(width: 60, height: 60)
     }
 }
 
@@ -64,18 +64,23 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
-            HStack {
-                btn(icon: "phone.fill", texto: "Ligar").padding(.trailing, 30)
-                btn(icon: "calendar", texto: "Planejar").padding(.trailing, 30)
-                btn(icon: "circle.grid.3x3", texto: "Teclado").padding(.trailing, 30)
-                btn(icon: "circle.grid.3x3", texto: "Teclado").padding(.trailing, 30)
+            HStack(spacing: 30) {
+                btn(icon: "phone", texto: "Ligar")
+                btn(icon: "calendar", texto: "Planejar")
+                btn(icon: "circle.grid.3x3", texto: "Teclado")
+                btn(icon: "heart", texto: "Favorito")
 
-            }
+            }.padding(50)
             Ligacoes(pfp: "pfp1.icon", nome: "Pessoa 1", efetuada: true, perdida: false, dia: "Hoje")
+            Divider()
             Ligacoes(pfp: "pfp2.icon", nome: "Pessoa 2", efetuada: false, perdida: true, dia: "Hoje")
+            Divider()
             Ligacoes(pfp: "pfp1.icon", nome: "Pessoa 3", efetuada: false, perdida: false, dia: "Hoje")
+            Divider()
             Ligacoes(pfp: "pfp2.icon", nome: "Pessoa 4", efetuada: true, perdida: false, dia: "Hoje")
+            Divider()
             Ligacoes(pfp: "pfp2.icon", nome: "Pessoa 5", efetuada: false, perdida: true, dia: "Hoje")
+            Divider()
 
         }
         .padding()
