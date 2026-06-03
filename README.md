@@ -2,29 +2,44 @@
 >
 > *The rest of this README is in Brazilian Portuguese (pt-BR).*
 
-
 ---
 
-# Ligacoes
+# Histórico de Ligações (SwiftUI)
 
-App em **SwiftUI** criado para simular uma tela de histórico de chamadas telefônicas utilizando **elementos reutilizáveis** — cada linha de ligação e cada botão do menu superior são views próprias, alimentadas por diferentes parâmetros.
+App desenvolvido em **SwiftUI** para simular uma interface de histórico de chamadas telefônicas. O projeto foca no conceito de **componentização e reutilização de views**, onde cada linha de registro e cada botão de ação funcionam de forma genérica e dinâmica com base nos parâmetros recebidos.
 
 ## Status
 
-**Concluído** — Finalizado com toda a lógica das chamadas e layout.
+**Concluído** — Layout estruturado, componentes isolados e lógica de validação de chamadas implementada.
 
 ## Em que consiste
 
-- **`btn`** — botão de ação vertical composto por um ícone de sistema (`SF Symbols`) e um texto descritivo abaixo.
-- **`Ligacoes`** — linha de histórico reutilizável que exibe a foto do perfil estilizada em círculo, nome do contato (que fica vermelho se a chamada for perdida/recusada), ícone indicativo do tipo de chamada (efetuada/recebida) e a data/hora.
-- **`ContentView`** — tela principal que junta o menu superior de botões e renderiza uma lista com cinco registros de chamadas diferentes reaproveitando o componente principal.
+O projeto é construído sobre três pilares principais dentro de `ContentView.swift`:
 
-Código em `Ligacoes/ContentView.swift`.
+- **`btn`** — Componente vertical reutilizável que gera botões de ação rápida. Recebe um ícone nativo do iOS (`SF Symbols`) e um texto descritivo, aplicando estilização de fundo circular cinza.
+- **`Ligacoes`** — Linha de histórico customizável que gerencia estados complexos de chamadas. Ela recebe a foto de perfil (`Image`), nome do contato, data/hora e três flags booleanas (`efetuada`, `perdida`, `recusada`).
+- **`ContentView`** — A tela principal que consome os componentes. Organiza o menu superior com espaçamento adequado e empilha o histórico usando divisores (`Divider`), simulando a listagem real do ecossistema Apple.
+
+### Lógica de Validação (`verificarChamada`)
+Dentro do componente `Ligacoes`, existe uma função que analisa os booleanos para determinar dinamicamente o texto descritivo e a cor do nome do contato:
+* Se `perdida` for `true`, o nome do contato fica **vermelho**.
+* A combinação das flags gera textualmente os estados: *Recusada*, *Perdida*, *Efetuada* ou *Recebida*.
 
 ## Como executar
 
-Abra o projeto no Xcode e rode no simulador ou dispositivo (▶︎).
+### Pré-requisitos
+* macOS Monterey (ou superior)
+* Xcode 13+
+* iOS SDK 15+
 
-## PREVIEW
+### Passo a passo
+1. Clone este repositório ou copie os arquivos para um projeto SwiftUI no Xcode.
+2. Certifique-se de ter as imagens correspondentes no seu `Assets.xcassets` (`max.icon`, `verso.icon`, etc.).
+3. Abra o projeto no Xcode.
+4. Use o **Canvas/Preview** do Xcode (`⌥ + ⌘ + P`) para visualizar em tempo real ou execute (`⌘ + R`) no Simulador.
 
-<img src=./preview.png></img>
+## Preview da Interface
+
+<p align="center">
+  <img src="./preview.png" alt="Preview do histórico de ligações" width="300">
+</p>
